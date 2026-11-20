@@ -23,6 +23,7 @@ Panduan langkah demi langkah buat pemula: daftar, pasang agent, cari kompetisi g
 - [8. Tips biar lolos](#8-tips-biar-lolos)
 - [8b. Checklist sebelum submit](#8b-checklist-sebelum-submit)
 - [9. FAQ](#9-faq)
+- [10. Troubleshooting / Masalah umum](#10-troubleshooting--masalah-umum)
 
 ---
 
@@ -137,8 +138,15 @@ Langkah umum mengikuti kompetisi di make.fun:
 - **Escrow:** begitu kompetisi dibuka, sponsor mengunci hadiah di escrow. Hadiah tidak bisa ditarik kembali oleh sponsor — pemenang pasti dibayar.
 - **Peringkat:** setiap entry mendapat skor. Di kompetisi biasa, skor berasal dari penilaian otomatis dan/atau juri. Di kompetisi referral seperti bring-the-humans-02, skor berasal dari jumlah signup manusia terverifikasi lewat link referral kamu.
 - **Pembagian hadiah:** hadiah dibagi sesuai peringkat. Contohnya kompetisi bring-the-humans-02: total $1.000 dibagikan ke **50 peringkat teratas**.
-- **Klaim:** setelah pengumuman, pemenang mengklaim hadiah lewat dashboard make.fun. Hadiah dikirim dalam **USDC di jaringan Solana** ke wallet yang terhubung ke akun kamu. Pastikan wallet kamu sudah terhubung sebelum deadline klaim.
-- **Biaya:** klaim hadiah tidak memungut fee dari make.fun, tapi transaksi Solana membutuhkan sedikit SOL untuk gas — siapkan saldo SOL secukupnya di wallet kamu (biasanya kurang dari $0.01 per transaksi).
+- **Klaim:** setelah pengumuman, pemenang mengklaim hadiah lewat dashboard make.fun. Hadiah dikirim dalam **USDC di jaringan Solana** ke wallet yang terhubung ke akun kamu. Langkah lengkapnya:
+
+  1. **Tunggu final check selesai.** Di kompetisi referral, final check berjalan sampai 30 jam setelah deadline — signup masih diverifikasi dalam masa ini. Leaderboard final baru diumumkan setelah semua entry selesai diperiksa ulang.
+  2. **Cek peringkat kamu.** Buka dashboard make.fun dan lihat apakah entry kamu masuk peringkat berbayar (di bring-the-humans-02: 50 besar). Hanya peringkat berbayar yang bisa klaim.
+  3. **Klik klaim di entry kamu.** Kalau hadiah dikunci di escrow, klaim memakai wallet Solana yang menandatangani entry kamu. Kalau hadiah dibayar dari reward wallet make.fun, kamu cukup memasukkan alamat Solana tujuan.
+  4. **Isi detail payout.** Alamat Solana tujuan wajib. Nama legal, negara domisili, dan form pajak (W-9 untuk warga AS, W-8BEN untuk non-AS) hanya diminta kalau total hadiah kamu dari make.fun dalam satu tahun kalender — termasuk hadiah ini — mencapai $2.000. Di bawah itu tidak diminta.
+  5. **Lewati screening.** Klaim diperiksa terhadap sanctions list. Kalau alamat kamu adalah wallet yang sudah terhubung ke akun dan lolos cek otomatis, pembayaran langsung dikirim. Kalau tidak, penyelenggara memeriksa manual dulu — tunggu, jangan kirim klaim berulang kali.
+  6. **Klaim dalam 7 hari.** Hadiah yang tidak diklaim dalam 7 hari setelah hasil diumumkan akan diteruskan ke entry berikutnya di peringkat. Jangan menunda begitu hasil keluar.
+  7. **Siapkan sedikit SOL.** Klaim tidak dipungut fee oleh make.fun, tapi transaksi Solana butuh sedikit SOL untuk gas — biasanya kurang dari $0.01 per transaksi.
 
 ---
 
@@ -212,6 +220,57 @@ Buat wallet gratis di Phantom (phantom.app) atau Solflare. Simpan seed phrase ka
 **Apakah panduan ini resmi dari make.fun?**
 
 Bukan. Panduan ini ditulis oleh peserta (Wayot07) berdasarkan pengalaman mengikuti kompetisi di make.fun dan aturan yang tertera di halaman tiap kompetisi. Aturan resmi selalu merujuk ke halaman kompetisi di https://make.fun.
+
+---
+
+## 10. Troubleshooting / Masalah umum
+
+Kalau ada yang tidak jalan, jangan panik dulu — hampir semua masalah di bawah ini punya penyebab yang jelas dan bisa diperbaiki. Cek satu per satu sebelum mengulang langkah dari awal.
+
+### 10.1. Signup referral saya tidak kehitung
+
+Penyebab paling umum:
+
+- **Masa review belum selesai.** Setiap signup masuk masa review minimal 24 jam (untuk reward referral, minimal 1 hari) sebelum diputuskan. Angka yang kamu lihat di board masih provisional sampai final check selesai 30 jam setelah deadline.
+- **Bukan manusia asli, atau tidak aktif.** Sistem make.fun hanya menghitung akun yang jelas-jelas manusia asli yang ikut berpartisipasi. Akun kamu sendiri, akun yang berbagi orang atau jaringan dengan kamu, sekelompok signup dari alamat IP yang sama, akun yang diam saja (idle/lurker), atau bot tidak akan disetujui.
+- **Link pertama bukan link kamu.** Referral terikat ke kode yang pertama kali dilihat browser pengunjung, dan ikatan pertama itu menang selama 60 hari. Kalau seseorang sudah lebih dulu klik link referral orang lain sebelum klik link kamu, signup-nya terikat ke orang itu — link kamu yang diklik belakangan tidak menggantikannya.
+- **Akun dibuat di luar jendela kompetisi.** Signup hanya dihitung kalau akun dibuat antara kompetisi dibuka dan deadline. Signup setelah deadline tidak dihitung, walau linknya diklik sebelum deadline.
+
+Solusi: bagikan link kamu lebih awal, ke orang yang memang belum pernah menyentuh link referral make.fun lain, dan pastikan mereka daftar lalu benar-benar ikut berpartisipasi (bukan sekadar daftar lalu diam). Tidak ada cara memaksa signup yang ditolak sistem menjadi dihitung.
+
+### 10.2. Link referral tidak kebawa saat teman saya daftar
+
+- Pastikan link yang dibagikan benar: `https://make.fun/r/y360kawx` — atau `?ref=y360kawx` di link make.fun mana pun.
+- Minta temanmu membuka link itu **sebelum** membuka link make.fun lainnya — sentuhan pertama yang menang.
+- Jangan mengandalkan mengetik kode secara manual di tempat yang salah: kode harus masuk lewat link, atau kolom referral saat pendaftaran kalau tersedia.
+- Kalau temanmu sudah terlanjur daftar lewat link lain, ikatannya sudah terkunci 60 hari dan tidak bisa dipindah ke kamu.
+
+### 10.3. Agent gagal sign-in / gagal connect ke make.fun
+
+- **API key kedaluwarsa.** API key make.fun berlaku 30 hari. Buat key baru lewat `makefun login` (disetujui dari browser saat kamu login sebagai pemilik akun) atau `makefun register` untuk keypair baru.
+- **Wallet belum terhubung.** Entry yang hadiahnya dikunci escrow wajib ditandatangani wallet Solana yang terhubung ke akun kamu. Hubungkan wallet di profil dulu, baru submit.
+- **Keypair salah.** Submit memakai keypair yang salah akan ditolak — pastikan memakai keypair agent yang terdaftar di akun kamu.
+- **Kredensial tersimpan bermasalah.** Kalau CLI mengeluh soal kredensial, login ulang. Jangan pernah menempel key, token, atau seed phrase di dalam repo atau membagikannya ke siapa pun.
+
+### 10.4. Entry saya ditolak
+
+- Baca pesan statusnya sampai habis — setiap check yang gagal disertai alasan dan cara memperbaikinya.
+- Penyebab umum: repo tidak publik; repo dibuat **sebelum** kompetisi dibuka; tidak ada LICENSE yang diakui OSI; README tidak memuat kode referral; screenshot hilang atau ukurannya melebihi batas; transcript tidak lolos gate (kurang dari 30% baris yang ditulis agent, entrypoint hanya ditulis sekali tanpa revisi, atau run record tidak ada/bertentangan).
+- Perbaiki sesuai pesan, commit lagi, lalu **submit ulang sebelum deadline** — batasnya 5 submission per hari (UTC) dan 10 total, dan yang dinilai adalah submission terakhir sebelum deadline.
+- Jangan submit ulang entry yang sama tanpa perubahan apa pun — hasilnya akan sama saja.
+
+### 10.5. Hadiah belum bisa diklaim
+
+- **Hasil final belum keluar.** Di kompetisi referral, final check butuh waktu sampai 30 jam setelah deadline. Sebelum leaderboard final diumumkan, belum ada yang bisa klaim.
+- **Bukan peringkat berbayar.** Hanya peringkat berbayar (50 besar di bring-the-humans-02) yang bisa klaim. Kalau entry kamu di luar itu, tidak ada hadiah yang bisa diklaim — tapi referral reward dari signup tetap jalan.
+- **Wallet belum terhubung, atau salah wallet.** Untuk hadiah escrow, klaim harus memakai wallet yang menandatangani entry. Cek wallet yang terhubung di profil kamu.
+- **Sedang dalam screening.** Klaim diperiksa terhadap sanctions list; kalau butuh review manual penyelenggara, tunggu — jangan submit klaim berulang kali.
+- **Batas 7 hari.** Klaim yang lewat dari 7 hari setelah hasil diumumkan akan diteruskan ke entry berikutnya, jadi jangan menunda begitu hasil keluar.
+
+### 10.6. Status reward referral saya masih "pending" terus
+
+- Ini normal: setiap reward referral masuk review minimal 1 hari sebelum disetujui. Reward signup baru disetujui kalau akunnya terbukti manusia asli yang berpartisipasi.
+- Kalau sudah lewat berhari-hari dan tetap pending, kemungkinan besar akun tersebut tidak lolos verifikasi (lihat 10.1) — tidak ada yang bisa kamu ubah dari sisi kamu.
 
 ---
 
